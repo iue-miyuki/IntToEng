@@ -44,7 +44,7 @@ public class IntToEng {
 	 	return c;
 	 	}
 	 	
-        return a[n];
+        return a[m];
 	}
 
 	 static String translateEng(int n) {
