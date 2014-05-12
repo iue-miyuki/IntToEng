@@ -18,16 +18,38 @@ public class IntToEng {
 		 			"eighteen","nineteen"};
 		 	String[] b = {"twenty","thirty","forty","fifty",
 		 			"sixty","seventy","eighty","ninety"};
+		 	String[] d = {"thousand","million","billion"};
+		 	String[] e = {"one","ten","hundred"};
 		 	int m = n;
+		 	int l = n;
 		 	int s, t;
+		 	int x = 0;
+		 	int y;
 		 	String c = "";
+		 	String p = "";
+		 	if(m>=1000 && m<1000000) {
+		 		s = m;
+		 		m = m%100;
+		 		if(m==0) {
+		 			while(l>0) { 
+		 				l=l/10;
+		 				x++;
+		 				}
+		 			y = (x-1)/3;
+		 			if(x==4) p += e[0];
+		 			if(x==5) p += e[1];
+		 			if(x==6) p += e[2];
+		 			p += " "+d[y-1];
+		 			return p;		 			
+		 		}
+		 	}
 		 	if(m>=100 && m<1000) {
 		 		s = m/100;
 		 		m = m%100;
 		 		if(m==0) {
-		 			return a[s]+" handred";
+		 			return a[s]+" hundred";
 		 		}
-		 		c = a[s]+" handred ";
+		 		c = a[s]+" hundred ";
 		 	}
 		 	if(m>19 && m<100) {
 		 		s = m/10;
