@@ -58,6 +58,9 @@ public class IntToEng {
 	 	String st = "";
 	 	int u = sn.length();
 	 	int z = u%3;
+	 	if(u>6) System.out.println("”‚ª‘å‚«‚·‚¬‚Ü‚·B");
+	 	else{
+	 	
 	 	if(u<4) {
 	 		return hunToone(n);
 	 	}
@@ -79,7 +82,7 @@ public class IntToEng {
 	 	q = Integer.parseInt(st);
 	 	
 	 	ss = hunToone(m) + " thousands " ;
-	 	if(hunToone(q).equals(0)) ss += hunToone(q);
+	 	if(!hunToone(q).equals("zero")) ss += hunToone(q);
 	 	
 		 	if(m>=1000 && m<1000000) {
 		 		s = m;
@@ -97,6 +100,7 @@ public class IntToEng {
 		 			return p;		 			
 		 		}
 		 	}
+	 	}
 		 	return ss;
 	 }
 }
