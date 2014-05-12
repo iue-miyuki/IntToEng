@@ -9,13 +9,7 @@ public class IntToEng {
 	        
 	        System.out.println(translateEng(input));	        
 }
-	 static String[] a = {"zero","one","two","three","four",
-	 			"five","six","seven","eight","nine",
-	 			"ten","eleven","twelve","thirteen",
-	 			"fourteen","fifteen","sixteen","seventeen",
-	 			"eighteen","nineteen"};
-	 	static String[] b = {"twenty","thirty","forty","fifty",
-	 			"sixty","seventy","eighty","ninety"};
+	 
 	 	static String[] d = {"thousand","million","billion"};
 	 	static String[] e = {"one","ten","hundred"};
 	 	
@@ -24,8 +18,15 @@ public class IntToEng {
 	 	static int y;
 	 	static String c = "";
 	 	static String p = "";
-	static String hunToone(int m, int n){
-		
+	 	
+	static String hunToone(int m){
+		String[] a = {"zero","one","two","three","four",
+	 			"five","six","seven","eight","nine",
+	 			"ten","eleven","twelve","thirteen",
+	 			"fourteen","fifteen","sixteen","seventeen",
+	 			"eighteen","nineteen"};
+	 	String[] b = {"twenty","thirty","forty","fifty",
+	 			"sixty","seventy","eighty","ninety"};
 	 	if(m>=100 && m<1000) {
 	 		s = m/100;
 	 		m = m%100;
@@ -43,27 +44,42 @@ public class IntToEng {
 	 	c += b[s-2]+  " " + a[t];
 	 	return c;
 	 	}
-	 	
-        return a[n];
+        return a[m];
 	}
 
+	
 	 static String translateEng(int n) {
 		 	int m = n;
 	 	int l = n;
-	 	String sm = "";
+	 	int q;
+	 	String sm ="";
 	 	String ss= "";
 	 	String sn = String.valueOf(n);
-	 	if(sn.length()%3==1){
-	 		sm = sn.substring(0,1);
+	 	String st = "";
+	 	int u = sn.length();
+	 	int z = u%3;
+	 	if(u<4) {
+	 		return hunToone(n);
+	 	}
+	 	if(z==1){
+	 		sm = sn.substring(0,z);
+	 		st = sn.substring(z);
 	 	};
-	 	if(sn.length()%3==2){
-	 		sm = sn.substring(0,2);
+	 	if(z==2){
+	 		sm = sn.substring(0,z);
+	 		st = sn.substring(z);
 	 	};
-	 	if(sn.length()%3==0){
+	 	if(z==0){
 	 		sm = sn.substring(0,3);
+	 		st = sn.substring(3);
 	 	};
+	 	
+	 	
 	 	m = Integer.parseInt(sm);
-	 	ss = hunToone(m,n) + " thousands";
+	 	q = Integer.parseInt(st);
+	 	
+	 	ss = hunToone(m) + " thousands " ;
+	 	if(hunToone(q).equals(0)) ss += hunToone(q);
 	 	
 		 	if(m>=1000 && m<1000000) {
 		 		s = m;
